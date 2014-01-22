@@ -2,7 +2,7 @@
 
 This project is done as a part of [Network Security](http://go.utdallas.edu/cs6349.001.13f) course, I did in UT Dallas in Fall 2013.
 Please refer to [requirement document](https://docs.google.com/file/d/0B2OZg77xly1YY0U1SlFtMUozeWM/edit) for
-details of the requirements. In short, we needed to design a [Kerberos](http://en.wikipedia.org/wiki/Kerberos_(protocol)),
+details of the requirements. In short, we needed to design a [Kerberos](http://en.wikipedia.org/wiki/Kerberos_(protocol) alike protocol,
 which includes a *Authentication Server* that authenticates clients and provides tokens for *Master File Server*
 and *Department File Servers*. Client only communicate with master server that relays client's request for file to
 department server and response from department server to client. In addition all these communications are encrypted.
@@ -137,3 +137,4 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
