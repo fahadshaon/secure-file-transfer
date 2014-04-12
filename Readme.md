@@ -113,7 +113,7 @@ Showing example for client bumblebee for department finance. You can execute oth
 
 # Team
 
-* Fahad Shaon - Designed packet encoding decoding scheme, Client, Authentication Server and manages the project.
+* Fahad Shaon - Designed packet encoding decoding scheme, Authentication Server and manages the project.
 * Aditya Thakkar - Department file servers
 * Karthik Gunasekaran - Master file server
 
