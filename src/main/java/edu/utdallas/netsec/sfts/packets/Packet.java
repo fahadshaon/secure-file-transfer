@@ -7,6 +7,7 @@ import javax.crypto.Cipher;
 import javax.crypto.Mac;
 import javax.crypto.spec.IvParameterSpec;
 import java.io.Serializable;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -87,7 +88,7 @@ public abstract class Packet implements Serializable {
 
             byte[] decryptedMac = sha256MacDecrypt.doFinal(decrypted);
 
-            if (!Arrays.equals(decryptedMac, encryptedPayload.mac)) {
+            if (!MessageDigest.isEqual(decryptedMac, encryptedPayload.mac)) {
                 throw new MACException();
             }
 

@@ -12,6 +12,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -150,7 +151,7 @@ public class MasterFileServer {
         DeptMasterResponse dMasterResponse = new DeptMasterResponse();
         dMasterResponse.decrypt(sessionKeyMasterDepartment, encryptedPayload);
 
-        if (!Arrays.equals(dMasterResponse.nonce, mDeptRequest.nonce) &&
+        if (!MessageDigest.isEqual(dMasterResponse.nonce, mDeptRequest.nonce) &&
                 !dMasterResponse.clientName.equals(mDeptRequest.clientName)) {
             dsocket.close();
             serverSocket.close();

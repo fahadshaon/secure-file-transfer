@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -116,7 +117,7 @@ public class Client {
 
         System.out.println("Auth Server response decrypted");
 
-        if (!Arrays.equals(authServerResponse.nonce, nonce) || !clientName.equals(authServerResponse.clientName)) {
+        if (!MessageDigest.isEqual(authServerResponse.nonce, nonce) || !clientName.equals(authServerResponse.clientName)) {
             asSocket.close();
             throw new RuntimeException("Client name or nonce mismatch. Expected client name-" + clientName);
         }
@@ -166,7 +167,7 @@ public class Client {
         MasterClientResponse mClientResponse = new MasterClientResponse();
         mClientResponse.decrypt(sessionKeyClientMaster, encryptedPayloadReceived);
 
-        if (!Arrays.equals(mClientResponse.nonce, masterRequest.nonce) ||
+        if (!MessageDigest.isEqual(mClientResponse.nonce, masterRequest.nonce) ||
                 !mClientResponse.clientName.equals(clientName)) {
             masterSocket.close();
             throw new RuntimeException("Client name or nonce mismatch in response. " +
@@ -180,7 +181,7 @@ public class Client {
         DeptClientResponse dClientResponse = new DeptClientResponse();
         dClientResponse.decrypt(sessionKeyClientDepartment, departmentResponse);
 
-        if (dClientResponse.respCode == 0 && Arrays.equals(dClientResponse.nonce, deptRequest.nonce)) {
+        if (dClientResponse.respCode == 0 && MessageDigest.isEqual(dClientResponse.nonce, deptRequest.nonce)) {
 
             String basePath = clientProperties.getProperty("client.fileSaveLocation");
 
